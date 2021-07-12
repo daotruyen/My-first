@@ -5,6 +5,13 @@
 //  Created by Tuyen on 20/06/2021.
 //
 
+//
+//  ViewController.swift
+//  Weather
+//
+//  Created by Tuyen on 20/06/2021.
+//
+
 import UIKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
@@ -105,7 +112,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let saveAction = UIAlertAction(title: "Search", style: .default, handler: {_ in
             let textField = alert.textFields![0] as UITextField
             guard let cityname = textField.text else { return}
-            self.loadData(city: cityname)
+            //self.loadData(city: cityname)
+            print(cityname)
+            let namecity = cityname.folding(options: .diacriticInsensitive, locale: .current)
+            print(namecity)
+            self.loadData(city: namecity)
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         alert.addAction(saveAction)
@@ -166,4 +177,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 }
+
+
 
