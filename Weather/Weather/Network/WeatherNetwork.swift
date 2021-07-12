@@ -4,6 +4,12 @@
 //
 //  Created by Tuyen on 22/06/2021.
 //
+//
+//  WeatherNetwork.swift
+//  Weather
+//
+//  Created by Tuyen on 22/06/2021.
+//
 
 import UIKit
 let API_KEY = "20d29094d2068ccbf9d139d31346fcd1"
@@ -28,7 +34,8 @@ class WeatherNetwork: UIViewController {
     }
     func fetchCurrentWeather(city: String, completion: @escaping (WeatherModel) -> ()) {
         let formattedCity = city.replacingOccurrences(of: " ", with: "+")
-        let API_URL = "http://api.openweathermap.org/data/2.5/weather?q=\(formattedCity)&appid=\(API_KEY)"
+        let cityFormatted = formattedCity.replacingOccurrences(of: "đ", with: "d")
+        let API_URL = "http://api.openweathermap.org/data/2.5/weather?q=\(cityFormatted)&appid=\(API_KEY)"
         
         guard let url = URL(string: API_URL) else {
                  fatalError()
@@ -194,3 +201,4 @@ class WeatherNetwork: UIViewController {
     }
     
 }
+
